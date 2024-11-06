@@ -1,4 +1,4 @@
-# TypeScript TOML Typing
+# tomlscript: TypeScript TOML Typing
 
 Have you ever wanted to be able to define typescript types using [TOML](https://toml.io/en/)? Well, now you can!
 
@@ -10,7 +10,7 @@ Try out the examples on TypeScript Playground: [TypeScript Playground Link](http
 
 Below are examples demonstrating various TOML string configurations and how they translate to TypeScript types.
 
-### Simple TOML Example
+### Simple tomlscript Example
 
 ```typescript
 import { TomlStringToType } from '../src/toml-types';
