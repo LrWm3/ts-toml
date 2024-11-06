@@ -1,22 +1,6 @@
 # TypeScript TOML Typing
 
-This project provides a set of TypeScript types that allow conversion of TOML configuration strings into TypeScript object types, supporting complex, nested structures. By leveraging type mappings and utilities, this library enables users to type-check TOML-like configurations in TypeScript directly, creating a structured and reliable experience.
-
-## Features
-
-- **Basic and Complex TOML Parsing**: Supports parsing simple key-value pairs, nested objects, and arrays.
-- **Type Mappings**: Custom type mappings allow for interpreting TOML values with default or extended types.
-- **Nested Structure Support**: Create deeply nested configurations with support for TOML-like sections.
-
-## Installation
-
-To use this project, you’ll need TypeScript installed.
-
-```bash
-npm install typescript
-```
-
-Simply clone the repository and import the types from `src` for usage in your project.
+Have you ever wanted to be able to define typescript types in TOML? Well, now you can!
 
 ## Try It Out!
 
@@ -147,6 +131,10 @@ let veryComplexTomlValue: VeryComplexToml = {
   }
 };
 ```
+
+## Installation
+
+Copy the source files into your project.
 
 ## Contributing
 
