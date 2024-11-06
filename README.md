@@ -13,6 +13,9 @@ Below are examples demonstrating various TOML string configurations and how they
 ### Simple TOML Example
 
 ```typescript
+import { TomlStringToType } from '../src/toml-types';
+import { DefaultTypeNameMapping } from '../src/type-mapping';
+
 type SimpleToml = TomlStringToType<
   DefaultTypeNameMapping,
   `
