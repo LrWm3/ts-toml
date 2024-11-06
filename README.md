@@ -1,6 +1,6 @@
 # TypeScript TOML Typing
 
-Have you ever wanted to be able to define typescript types in TOML? Well, now you can!
+Have you ever wanted to be able to define typescript types using TOML? Well, now you can!
 
 ## Try It Out!
 
