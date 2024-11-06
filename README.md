@@ -10,6 +10,47 @@ Try out the examples on TypeScript Playground: [TypeScript Playground Link](http
 
 Below are examples demonstrating various TOML string configurations and how they translate to TypeScript types.
 
+### The old way we've done a million times before
+
+```typescript
+type Config = {
+  title: string;
+  retries: number;
+  database: {
+    host: string;
+    port: number;
+  };
+  settings: {
+    features: string[];
+    admin: {
+      enabled: boolean
+    };
+  };
+};
+```
+
+### new way; exciting yet familiar syntax for creating types.
+
+```typescript
+type Config = TomlStringToType<
+  DefaultTypeNameMapping,
+  `
+    title = string
+    retries = number
+
+    [database]
+    host = string
+    port = number
+
+    [settings]
+    features[] = [string]
+
+    [settings.admin]
+    enabled = boolean
+  `
+>;
+```
+
 ### Simple tomlscript Example
 
 ```typescript
@@ -38,10 +79,10 @@ let simpleTomlValue: SimpleToml = {
 };
 ```
 
-### Complex TOML Example
+### Complex tomlscript example
 
 ```typescript
-type ComplexToml = TomlStringToType<
+type ComplexTomlType = TomlStringToType<
   DefaultTypeNameMapping,
   `
     title = string
@@ -58,7 +99,7 @@ type ComplexToml = TomlStringToType<
   `
 >;
 
-let complexTomlValue: ComplexToml = {
+let complexTomlValue: ComplexTomlType = {
   title: "Complex Title",
   age: 42,
   tags: ["tag1", "tag2"],
@@ -75,24 +116,25 @@ let complexTomlValue: ComplexToml = {
 };
 ```
 
-### Very Complex TOML Example
+### Using other types in tomlscript
 
 This example demonstrates extended type mapping, enabling references to other TOML structures.
 
 ```typescript
+// Allows nested usage of previously defined types
 type ExtendedTypeNameMapping = {
   string: string;
   number: number;
   boolean: boolean;
-  ComplexToml: ComplexToml; // Allows nested usage of previously defined types
+  ComplexToml: ComplexTomlType; 
 };
 
-type VeryComplexToml = TomlStringToType<
+type ExtendedTomlType = TomlStringToType<
   ExtendedTypeNameMapping,
   `
     title = string
     age = number
-    complex = ComplexToml
+    complex = ComplexTomlType
     tags[] = [string]
 
     [config]
@@ -104,8 +146,8 @@ type VeryComplexToml = TomlStringToType<
   `
 >;
 
-let veryComplexTomlValue: VeryComplexToml = {
-  title: "Very Complex Title",
+let extendedTomlType: ExtendedTomlType = {
+  title: "ExtendedTomlType",
   age: 35,
   tags: ["outer-tag1", "outer-tag2"],
   complex: {
